@@ -88,7 +88,7 @@
 
 ![OSS Screen Shot][product-screenshot-detail]
 
-Open Swim Scoreboard translates serial data feed used to drive a standard Colorado Timing swim scoreboard, and uses SignalR, running as a local service, to feed it to browser pages.
+Open Swim Scoreboard translates serial data feed used by the Colorado Timing System6 to drive a standard swim scoreboard, and uses SignalR, running as a local service, to feed it to browser pages.
 It also reads Meet Manager-generated start lists (.scb files), formats them as JSON, and saves the data as JSON inside a javascript wrapper.
 
 Both sets of data are translated into HTML via javascript, enabling a variety of informational and graphic effects for video scoreboards, 
@@ -125,6 +125,8 @@ Open Swim Scoreboard is a Windows 10/11 application that targets [.NET Core 3.1]
 
 You'll also need to **make** a 1/4" male TRS to DB9 cable. It's not hard, but you'll need a soldering iron. 
 Rudimentary instructions courtesy of [Andy Martin](https://github.com/STU940652/CTS_Scoreboard).
+
+You'll also need a Colorado Timing System6 for the data feed. Open Swim Scoreboard will likely work work with other CTS console versions, but has only been tested on a System6.
 
 ### Installation
 
