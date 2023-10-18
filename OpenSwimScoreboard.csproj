@@ -16,7 +16,7 @@
     <AssemblyVersion>1.1.0</AssemblyVersion>
     <Copyright>2023</Copyright>
     <Title>Open Swim Scoreboard</Title>
-    <FileVersion>1.1.0</FileVersion>
+    <FileVersion>1.1.0-beta</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
