@@ -138,7 +138,7 @@ Or you can close this repository and compile it yourself. This is a Visual Studi
 
 ### Offline Testing
 
-The application can be tested without live scoreboard data by modifying [BackgroundServices(https://github.com/wbcrowell/OpenSwimScoreboard/blob/master/BackgroundServices/ScoreboardBackgroundService.cs)]. 
+The application can be tested without live scoreboard data by modifying [BackgroundServices](https://github.com/wbcrowell/OpenSwimScoreboard/blob/master/BackgroundServices/ScoreboardBackgroundService.cs). 
 Comment out the live DataReader and uncomment FileScoreDataReader. Everything necessary to stream a few minutes of "canned" data, including the data itself, is included in the project.
 
 ### Customization
