@@ -7,17 +7,16 @@
     <PackageProjectUrl></PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>icon.png</PackageIcon>
-    <FileVersion>0.9</FileVersion>
     <ApplicationIcon>icon.ico</ApplicationIcon>
     <OutputType>WinExe</OutputType>
     <UseWindowsForms>True</UseWindowsForms>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <UseWPF>False</UseWPF>
-    <AssemblyVersion>0.9</AssemblyVersion>
+    <AssemblyVersion>1.1.0</AssemblyVersion>
     <Copyright>2023</Copyright>
     <Title>Open Swim Scoreboard</Title>
-    <Version>1.1.0-beta</Version>
+    <FileVersion>1.1.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
