@@ -136,6 +136,11 @@ Or you can close this repository and compile it yourself. This is a Visual Studi
 
 ![OSS Screen Shot][product-screenshot]
 
+### Offline Testing
+
+The application can be tested without live scoreboard data by modifying [BackgroundServices(https://github.com/wbcrowell/OpenSwimScoreboard/blob/master/BackgroundServices/ScoreboardBackgroundService.cs)]. 
+Comment out the live DataReader and uncomment FileScoreDataReader. Everything necessary to stream a few minutes of "canned" data, including the data itself, is included in the project.
+
 ### Customization
 The HTML page used to present the real-time scoreboard can be endlessly customized, depending on the developer's experience with HTML5 and javascript. 
 Multiple versions of the same page can be created and run&mdash;simultaneously if needed.
@@ -170,7 +175,7 @@ The following are helpful but not essential:
 That list will automatically load event and swimmer names/teams into the html scoreboard.
 (The user is given the option to find and parse this data via the Winforms interface when the app starts.)
 
-* site.js uses the following selectors when updating the scoreboard times and names (where (x) is the lane number):
+* site.js uses the following selectors when updating the html page's scoreboard times and names (where (x) is the lane number):
 
     |Data               |Selector             |
     |:------------------|:--------------------|
@@ -225,7 +230,7 @@ either restart OBS or double click the browser source and re-enter the local fil
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Serial data readers for Daktronics Omnisport 2000 and any other common timing systems
+- [ ] Serial data readers for Colorado Gen7, Daktronics Omnisport 2000, and any other common timing systems
 - [ ] Additional scoreboard designs, including animated SVG scoreboards
 - [ ] Switch to a cross-platform interface, so that the application can be run in MacOS and Linux
 

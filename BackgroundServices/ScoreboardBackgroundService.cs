@@ -28,15 +28,21 @@ namespace OpenSwimScoreboard.BackgroundServices
             ScoreboardRegister scoreboardRegister = new ScoreboardRegister();
 
             //Uncomment this DataReader to connect with a System6 console
-            dr = new System6ScoreDataReader();
+
+                dr = new System6ScoreDataReader();
+
             //-----------------------------------------------------------
+
+
             //Uncomment this DataReader to connect to the FileDataReader,
             // which is used for testing
-            //dr = new FileScoreDataReader
-            //{
-            //    FileName = "meet.bin" //FileName points to the file of
-            //                          // pre-recorded test stream data
-            //};
+
+                //dr = new FileScoreDataReader
+                //{
+                //    FileName = "meet.bin" //FileName points to the file of
+                //                          // pre-recorded test stream data
+                //};
+
             //-----------------------------------------------------------
 
             Task.Run(() => dr.Start(scoreboardRegister)); //start reading incoming data and post to ScoreboardRegister
