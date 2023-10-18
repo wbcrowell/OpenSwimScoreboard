@@ -1,0 +1,198 @@
+﻿@using OpenSwimScoreboard.Parameters
+<script>
+    var numLanes = @(DisplaySettings.NumLanes);
+    var scoreboardNames = null;
+    fetch("/ScoreboardFiles/session.json")
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+            scoreboardNames = data;
+        });
+</script>
+<div class="positioner">
+    <div class="background float-right" style="width:40%">
+        <div class="container">
+            <div class="row header-row">
+                <div class="col-12">
+                    Event <span class="event"></span>&emsp;Heat <span class="heat"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 text-right clock" style="font-size: 2em;">
+                    
+                </div>
+            </div>
+            <div class="row header-row">
+                <div class="col-12 eventName">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+</div>
+<svg id="svgScoreboard" width="500" height="376" viewBox="0 0 500 376" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="table">
+        <g id="lane1" class="row">
+            <rect transform="translate(0 0)" width="500" height="35" class="rowFill"></rect>
+            <text transform="translate(20 26)" font-size="20">
+                <tspan class="place" x="0" y="0"></tspan>
+            </text>
+            <text transform="translate(75 26)" font-size="20">
+                <tspan class="name" x="0" y="0"></tspan>
+            </text>
+            <text transform="translate(300 26)" font-size="20">
+                <tspan class="team" x="0" y="0"></tspan>
+            </text>
+            <text transform="translate(480 26)" font-size="20">
+                <tspan class="time" x="0" y="0"></tspan>
+            </text>
+            <text style="display:none;"><tspan class="laneNum"></tspan></text>
+        </g>
+        <g id="lane2" class="row">
+            <rect transform="translate(0 36)" width="500" height="35" class="rowFill"></rect>
+            <text transform="translate(20 62)" font-size="20">
+                <tspan class="place" x="0" y="0"></tspan>
+            </text>
+            <text transform="translate(75 62)" font-size="20">
+                <tspan class="name" x="0" y="0"></tspan>
+            </text>
+            <text transform="translate(300 62)" font-size="20">
+                <tspan class="team" x="0" y="0"></tspan>
+            </text>
+            <text transform="translate(480 62)" font-size="20">
+                <tspan class="time" x="0" y="0"></tspan>
+            </text>
+            <text style="display:none;"><tspan class="laneNum"></tspan></text>
+        </g>
+        <g id="lane3" class="row">
+            <rect transform="translate(0 72)" width="500" height="35" class="rowFill"></rect>
+            <text transform="translate(20 98)" font-size="20">
+                <tspan class="place" x="0" y="0"></tspan>
+            </text>
+            <text transform="translate(75 98)" font-size="20">
+                <tspan class="name" x="0" y="0"></tspan>
+            </text>
+            <text transform="translate(300 98)" font-size="20">
+                <tspan class="team" x="0" y="0"></tspan>
+            </text>
+            <text transform="translate(480 98)" font-size="20">
+                <tspan class="time" x="0" y="0"></tspan>
+            </text>
+            <text style="display:none;"><tspan class="laneNum"></tspan></text>
+        </g>
+        <g id="lane4" class="row">
+            <rect transform="translate(0 108)" width="500" height="35" class="rowFill"></rect>
+            <text transform="translate(20 134)" font-size="20">
+                <tspan class="place" x="0" y="0"></tspan>
+            </text>
+            <text transform="translate(75 134)" font-size="20">
+                <tspan class="name" x="0" y="0"></tspan>
+            </text>
+            <text transform="translate(300 134)" font-size="20">
+                <tspan class="team" x="0" y="0"></tspan>
+            </text>
+            <text transform="translate(480 134)" font-size="20">
+                <tspan class="time" x="0" y="0"></tspan>
+            </text>
+            <text style="display:none;"><tspan class="laneNum"></tspan></text>
+        </g>
+        <g id="lane5" class="row">
+            <rect transform="translate(0 144)" width="500" height="35" class="rowFill"></rect>
+            <text transform="translate(20 170)" font-size="20">
+                <tspan class="place" x="0" y="0"></tspan>
+            </text>
+            <text transform="translate(75 170)" font-size="20">
+                <tspan class="name" x="0" y="0"></tspan>
+            </text>
+            <text transform="translate(300 170)" font-size="20">
+                <tspan class="team" x="0" y="0"></tspan>
+            </text>
+            <text transform="translate(480 170)" font-size="20">
+                <tspan class="time" x="0" y="0"></tspan>
+            </text>
+            <text style="display:none;"><tspan class="laneNum"></tspan></text>
+        </g>
+        <g id="lane6" class="row">
+            <rect transform="translate(0 180)" width="500" height="35" class="rowFill"></rect>
+            <text transform="translate(20 206)" font-size="20">
+                <tspan class="place" x="0" y="0"></tspan>
+            </text>
+            <text transform="translate(75 206)" font-size="20">
+                <tspan class="name" x="0" y="0"></tspan>
+            </text>
+            <text transform="translate(300 206)" font-size="20">
+                <tspan class="team" x="0" y="0"></tspan>
+            </text>
+            <text transform="translate(480 206)" font-size="20">
+                <tspan class="time" x="0" y="0"></tspan>
+            </text>
+            <text style="display:none;"><tspan class="laneNum"></tspan></text>
+        </g>
+        <g id="lane7" class="row">
+            <rect transform="translate(0 216)" width="500" height="35" class="rowFill"></rect>
+            <text transform="translate(20 242)" font-size="20">
+                <tspan class="place" x="0" y="0"></tspan>
+            </text>
+            <text transform="translate(75 242)" font-size="20">
+                <tspan class="name" x="0" y="0"></tspan>
+            </text>
+            <text transform="translate(300 242)" font-size="20">
+                <tspan class="team" x="0" y="0"></tspan>
+            </text>
+            <text transform="translate(480 242)" font-size="20">
+                <tspan class="time" x="0" y="0"></tspan>
+            </text>
+            <text style="display:none;"><tspan class="laneNum"></tspan></text>
+        </g>
+        <g id="lane8" class="row">
+            <rect transform="translate(0 252)" width="500" height="35" class="rowFill"></rect>
+            <text transform="translate(20 278)" font-size="20">
+                <tspan class="place" x="0" y="0"></tspan>
+            </text>
+            <text transform="translate(75 278)" font-size="20">
+                <tspan class="name" x="0" y="0"></tspan>
+            </text>
+            <text transform="translate(300 278)" font-size="20">
+                <tspan class="team" x="0" y="0"></tspan>
+            </text>
+            <text transform="translate(480 278)" font-size="20">
+                <tspan class="time" x="0" y="0"></tspan>
+            </text>
+            <text style="display:none;"><tspan class="laneNum"></tspan></text>
+        </g>
+        <g id="lane9" class="row">
+            <rect transform="translate(0 288)" width="500" height="35" class="rowFill"></rect>
+            <text transform="translate(20 314)" font-size="20">
+                <tspan class="place" x="0" y="0"></tspan>
+            </text>
+            <text transform="translate(75 314)" font-size="20">
+                <tspan class="name" x="0" y="0"></tspan>
+            </text>
+            <text transform="translate(300 314)" font-size="20">
+                <tspan class="team" x="0" y="0"></tspan>
+            </text>
+            <text transform="translate(480 314)" font-size="20">
+                <tspan class="time" x="0" y="0"></tspan>
+            </text>
+            <text style="display:none;"><tspan class="laneNum"></tspan></text>
+        </g>
+        <g id="lane10" class="row">
+            <rect transform="translate(0 324)" width="500" height="35" class="rowFill"></rect>
+            <text transform="translate(20 350)" font-size="20">
+                <tspan class="place" x="0" y="0"></tspan>
+            </text>
+            <text transform="translate(75 350)" font-size="20">
+                <tspan class="name" x="0" y="0"></tspan>
+            </text>
+            <text transform="translate(300 350)" font-size="20">
+                <tspan class="team" x="0" y="0"></tspan>
+            </text>
+            <text transform="translate(480 350)" font-size="20">
+                <tspan class="time" x="0" y="0"></tspan>
+            </text>
+            <text style="display:none;"><tspan class="laneNum"></tspan></text>
+        </g>
+    </g>
+</svg>

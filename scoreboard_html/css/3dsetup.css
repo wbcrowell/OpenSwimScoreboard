@@ -1,0 +1,73 @@
+﻿body {
+}
+
+#container {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: clip;
+}
+
+#box {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 800px;
+    height: 480px;
+    border: 1px solid blue;
+    transform-origin: 0 0;
+    -webkit-transform-origin: 0 0;
+    -moz-transform-origin: 0 0;
+    -o-transform-origin: 0 0;
+}
+
+.corner {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.handle {
+    fill: blue;
+    position: absolute;
+    left: -5px;
+    top: -5px;
+}
+
+#button-array {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.button {
+    border: none;
+    color: white;
+    padding: 6px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    font-weight:bold;
+    margin: 4px 2px;
+    border-radius: 50%;
+}
+
+.button-selected {
+    color: greenyellow;
+}
+
+.lane-order-button {
+    background-color: #000;
+}
+
+.lanes-button {
+    background-color: #999;
+}
+
+.start-end-button {
+    background-color: #666;
+}

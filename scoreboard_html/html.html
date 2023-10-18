@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Open Swim Scoreboard: HTML</title>
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/site.css" />
+</head>
+<body>
+    <div class="container">
+        <script>
+            var scoreboardNames = null;
+        </script>
+        <div class="positioner">
+            <div id="offline-warning" class="offline">
+                <div class="background float-right" style="width:40%">
+                    <div class="container">
+                        <div class="row header-row">
+                            <div class="col-12 text-center" style="font-size: 1.2em;">
+                                Scoreboard is offline&emsp;<img src="img/balls.gif" style="height: 18px; width:18px;" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div id="time-clock" class="online">
+                <div class="background float-right" style="width:40%">
+                    <div class="container">
+                        <div class="row header-row">
+                            <div class="col-12">
+                                Event <span class="event"></span>&emsp;Heat <span class="heat"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 text-right clock" style="font-size: 2em;">
+                            </div>
+                        </div>
+                        <div class="row header-row">
+                            <div class="col-12 eventName">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div id="lane-times" class="online">
+                <div class="background">
+                    <div class="container">
+                        <div class="row header-row">
+                            <div class="col-1 text-center">
+                                Place
+                            </div>
+                            <div class="col-1 text-center">
+                                Lane
+                            </div>
+                            <div class="col-5">
+                                Name
+                            </div>
+                            <div class="col-2">
+                                Team
+                            </div>
+                            <div class="col-3">
+                                Time
+                            </div>
+                        </div>
+                        <div class="row" id="lane1">
+                            <div class="col-1">
+                                <span class="place text-center"></span>
+                            </div>
+                            <div class="col-1">
+                                <span class="laneNum text-center"></span>
+                            </div>
+                            <div class="col-5">
+                                <span class="name"></span>
+                            </div>
+                            <div class="col-2">
+                                <span class="team"></span>
+                            </div>
+                            <div class="col-3">
+                                <span class="time"></span>
+                            </div>
+                        </div>
+                        <div class="row" id="lane2">
+                            <div class="col-1">
+                                <span class="place text-center"></span>
+                            </div>
+                            <div class="col-1">
+                                <span class="laneNum text-center"></span>
+                            </div>
+                            <div class="col-5">
+                                <span class="name"></span>
+                            </div>
+                            <div class="col-2">
+                                <span class="team"></span>
+                            </div>
+                            <div class="col-3">
+                                <span class="time"></span>
+                            </div>
+                        </div>
+                        <div class="row" id="lane3">
+                            <div class="col-1">
+                                <span class="place text-center"></span>
+                            </div>
+                            <div class="col-1">
+                                <span class="laneNum text-center"></span>
+                            </div>
+                            <div class="col-5">
+                                <span class="name"></span>
+                            </div>
+                            <div class="col-2">
+                                <span class="team"></span>
+                            </div>
+                            <div class="col-3">
+                                <span class="time"></span>
+                            </div>
+                        </div>
+                        <div class="row" id="lane4">
+                            <div class="col-1">
+                                <span class="place text-center"></span>
+                            </div>
+                            <div class="col-1">
+                                <span class="laneNum text-center"></span>
+                            </div>
+                            <div class="col-5">
+                                <span class="name"></span>
+                            </div>
+                            <div class="col-2">
+                                <span class="team"></span>
+                            </div>
+                            <div class="col-3">
+                                <span class="time"></span>
+                            </div>
+                        </div>
+                        <div class="row" id="lane5">
+                            <div class="col-1">
+                                <span class="place text-center"></span>
+                            </div>
+                            <div class="col-1">
+                                <span class="laneNum text-center"></span>
+                            </div>
+                            <div class="col-5">
+                                <span class="name"></span>
+                            </div>
+                            <div class="col-2">
+                                <span class="team"></span>
+                            </div>
+                            <div class="col-3">
+                                <span class="time"></span>
+                            </div>
+                        </div>
+                        <div class="row" id="lane6">
+                            <div class="col-1">
+                                <span class="place text-center"></span>
+                            </div>
+                            <div class="col-1">
+                                <span class="laneNum text-center"></span>
+                            </div>
+                            <div class="col-5">
+                                <span class="name"></span>
+                            </div>
+                            <div class="col-2">
+                                <span class="team"></span>
+                            </div>
+                            <div class="col-3">
+                                <span class="time"></span>
+                            </div>
+                        </div>
+                        <div class="row" id="lane7">
+                            <div class="col-1">
+                                <span class="place text-center"></span>
+                            </div>
+                            <div class="col-1">
+                                <span class="laneNum text-center"></span>
+                            </div>
+                            <div class="col-5">
+                                <span class="name"></span>
+                            </div>
+                            <div class="col-2">
+                                <span class="team"></span>
+                            </div>
+                            <div class="col-3">
+                                <span class="time"></span>
+                            </div>
+                        </div>
+                        <div class="row" id="lane8">
+                            <div class="col-1">
+                                <span class="place text-center"></span>
+                            </div>
+                            <div class="col-1">
+                                <span class="laneNum text-center"></span>
+                            </div>
+                            <div class="col-5">
+                                <span class="name"></span>
+                            </div>
+                            <div class="col-2">
+                                <span class="team"></span>
+                            </div>
+                            <div class="col-3">
+                                <span class="time"></span>
+                            </div>
+                        </div>
+                        <div class="row" id="lane9">
+                            <div class="col-1">
+                                <span class="place text-center"></span>
+                            </div>
+                            <div class="col-1">
+                                <span class="laneNum text-center"></span>
+                            </div>
+                            <div class="col-5">
+                                <span class="name"></span>
+                            </div>
+                            <div class="col-2">
+                                <span class="team"></span>
+                            </div>
+                            <div class="col-2">
+                                <span class="time"></span>
+                            </div>
+                        </div>
+                        <div class="row" id="lane10">
+                            <div class="col-1">
+                                <span class="place text-center"></span>
+                            </div>
+                            <div class="col-1">
+                                <span class="laneNum text-center"></span>
+                            </div>
+                            <div class="col-5">
+                                <span class="name"></span>
+                            </div>
+                            <div class="col-2">
+                                <span class="team"></span>
+                            </div>
+                            <div class="col-3">
+                                <span class="time"></span>
+                            </div>
+                        </div>
+                        <div class="row header-row">
+                            <div class="col-12">
+                                <img src="img/icon.png" style="height:0.9em;" />&nbsp;<span style="font-size:0.9em;">OpenSwimScoreboard</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function displayLanes(numLanes, buffer = 0) {
+            //buffer included to provide compatibility with svg displayLanes
+            for (i = numLanes + 1; i <= 10; i++) {
+                board.querySelector("#lane" + i).style.display = "none";
+            }
+        }
+        function showLiveConnection() {
+            document.querySelectorAll(".online").forEach((item) => { item.style.display = "block"; });
+            document.querySelectorAll(".offline").forEach((item) => { item.style.display = "none"; });
+        }
+        function showDeadConnection() {
+            document.querySelectorAll(".online").forEach((item) => { item.style.display = "none"; });
+            document.querySelectorAll(".offline").forEach((item) => { item.style.display = "block"; });
+        }
+    </script>
+    <script>document.write('<script src="ScoreboardFiles/session.js?q=' + Math.floor(Math.random() * 10000) + '"\><\/script>');</script>
+    <!--<script src="lib/jquery/dist/jquery.min.js"></script>-->
+    <script src="lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/signalr/signalr.min.js"></script>
+    <script src="js/site.js?v=_iJXmIZ3gGQpVF15JH6rI6mDiCROSpTqOlkXhIC7gdM"></script>
+</body>
+</html>

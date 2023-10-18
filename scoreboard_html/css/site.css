@@ -1,0 +1,96 @@
+﻿@font-face {
+    font-family: 'oswaldregular';
+    src: url('../fonts/oswald-variablefont_wght-webfont.woff2') format('woff2'), url('../fonts/oswald-variablefont_wght-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.positioner {
+    position:absolute;
+    right: 0px;
+    bottom: 0px;
+    width: 33%;
+}
+
+.background {
+    background-color: rgba(32,90,226,0.8);
+    padding: 15px 0px;
+    margin: 0 15px 15px 0;
+    border-radius: 10px;
+}
+
+.row {
+    background: #fff;
+    margin: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.header-row {
+    margin: 0;
+    padding: 0;
+    background: none;
+    color: #fff;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+
+.online {
+    display: none;
+}
+
+.place {
+    color: salmon;
+}
+
+body {
+    background-color: transparent;
+    font-family: 'oswaldregular', Arial, sans-serif;
+    font-size: 20px;
+}
+
+/*-- svgScoreboard --*/
+#box {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 800px;
+    height: 480px;
+    transform-origin: 0 0;
+    -webkit-transform-origin: 0 0;
+    -moz-transform-origin: 0 0;
+    -o-transform-origin: 0 0;
+}
+
+#svgScoreboard .rowFill {
+    fill: rgba(32,90,226,0.8);
+}
+
+#svgScoreboard .row {
+    fill: #fff;
+}
+
+#svgScoreboard .row .name {
+    opacity: 0.5;
+}
+
+#svgScoreboard .row .team {
+    opacity: 0.5;
+}
+
+#svgScoreboard .row .time {
+    text-anchor: end;
+    opacity: 0.8;
+}
+
+#svgScoreboard .row .place {
+    fill: black;
+    text-anchor: middle;
+}
+
+#svgScoreboard .place-background {
+    stroke: blue;
+    stroke-width: 6px;
+    fill: white;
+    fill-opacity: 0.7;
+}

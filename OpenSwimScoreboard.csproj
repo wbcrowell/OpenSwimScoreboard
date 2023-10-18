@@ -1,0 +1,288 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>OpenSwimScoreboard</RootNamespace>
+    <StartupObject>OpenSwimScoreboard.Program</StartupObject>
+    <PackageProjectUrl></PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>icon.png</PackageIcon>
+    <FileVersion>0.9</FileVersion>
+    <ApplicationIcon>icon.ico</ApplicationIcon>
+    <OutputType>WinExe</OutputType>
+    <UseWindowsForms>True</UseWindowsForms>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <UseWPF>False</UseWPF>
+    <AssemblyVersion>0.9</AssemblyVersion>
+    <Copyright>2023</Copyright>
+    <Title>Open Swim Scoreboard</Title>
+    <Version>1.1.0-beta</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\**" />
+    <Compile Remove="Messenger\**" />
+    <Compile Remove="Models\**" />
+    <Compile Remove="Resources\**" />
+    <Compile Remove="scoreboard_html - Copy\**" />
+    <Compile Remove="scoreboard_html\jsx\**" />
+    <Compile Remove="Views\**" />
+    <Content Remove="Controllers\**" />
+    <Content Remove="Messenger\**" />
+    <Content Remove="Models\**" />
+    <Content Remove="Resources\**" />
+    <Content Remove="scoreboard_html - Copy\**" />
+    <Content Remove="scoreboard_html\jsx\**" />
+    <Content Remove="Views\**" />
+    <EmbeddedResource Remove="Controllers\**" />
+    <EmbeddedResource Remove="Messenger\**" />
+    <EmbeddedResource Remove="Models\**" />
+    <EmbeddedResource Remove="Resources\**" />
+    <EmbeddedResource Remove="scoreboard_html - Copy\**" />
+    <EmbeddedResource Remove="scoreboard_html\jsx\**" />
+    <EmbeddedResource Remove="Views\**" />
+    <None Remove="Controllers\**" />
+    <None Remove="Messenger\**" />
+    <None Remove="Models\**" />
+    <None Remove="Resources\**" />
+    <None Remove="scoreboard_html - Copy\**" />
+    <None Remove="scoreboard_html\jsx\**" />
+    <None Remove="Views\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="OSSApplicationContext.cs" />
+    <Compile Remove="Parameters\DisplaySettings.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="scoreboard_html\favicon.ico" />
+    <None Remove="scoreboard_html\html1.html" />
+    <None Remove="scoreboard_html\html10.html" />
+    <None Remove="scoreboard_html\html2.html" />
+    <None Remove="scoreboard_html\html3.html" />
+    <None Remove="scoreboard_html\html4.html" />
+    <None Remove="scoreboard_html\html5.html" />
+    <None Remove="scoreboard_html\html6.html" />
+    <None Remove="scoreboard_html\html7.html" />
+    <None Remove="scoreboard_html\html8.html" />
+    <None Remove="scoreboard_html\html9.html" />
+    <None Remove="scoreboard_html\img\icon.png" />
+    <None Remove="scoreboard_html\js\skewinterface.js" />
+    <None Remove="scoreboard_html\js\transforminterface.js" />
+    <None Remove="scoreboard_html\skewinterface.html" />
+    <None Remove="scoreboard_html\transforminterface.html" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="icon.ico" />
+    <Content Include="scoreboard_html\css\site.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="scoreboard_html\favicon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="scoreboard_html\fonts\oswald-variablefont_wght-webfont.woff">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="scoreboard_html\fonts\oswald-variablefont_wght-webfont.woff2">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="scoreboard_html\html.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="scoreboard_html\html1.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="scoreboard_html\html10.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="scoreboard_html\html2.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="scoreboard_html\html3.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="scoreboard_html\html4.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="scoreboard_html\html5.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="scoreboard_html\html6.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="scoreboard_html\html7.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="scoreboard_html\html8.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="scoreboard_html\html9.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="scoreboard_html\img\balls.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="scoreboard_html\img\gear.gif">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="scoreboard_html\img\icon.png">
+      <PackagePath>\</PackagePath>
+      <Pack>True</Pack>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="scoreboard_html\img\pool.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="scoreboard_html\lib\signalr\signalr.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="scoreboard_html\lib\signalr\signalr.js.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="scoreboard_html\lib\signalr\signalr.min.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="scoreboard_html\lib\signalr\signalr.min.js.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="scoreboard_html\js\site.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="scoreboard_html\lib\bootstrap\dist\css\bootstrap-grid.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="scoreboard_html\lib\bootstrap\dist\css\bootstrap-grid.css.map" />
+    <Content Include="scoreboard_html\lib\bootstrap\dist\css\bootstrap-grid.min.css" />
+    <Content Include="scoreboard_html\lib\bootstrap\dist\css\bootstrap-grid.min.css.map" />
+    <Content Include="scoreboard_html\lib\bootstrap\dist\css\bootstrap-reboot.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="scoreboard_html\lib\bootstrap\dist\css\bootstrap-reboot.css.map" />
+    <Content Include="scoreboard_html\lib\bootstrap\dist\css\bootstrap-reboot.min.css" />
+    <Content Include="scoreboard_html\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map" />
+    <Content Include="scoreboard_html\lib\bootstrap\dist\css\bootstrap.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="scoreboard_html\lib\bootstrap\dist\css\bootstrap.css.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="scoreboard_html\lib\bootstrap\dist\css\bootstrap.min.css">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="scoreboard_html\lib\bootstrap\dist\css\bootstrap.min.css.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="scoreboard_html\lib\bootstrap\dist\js\bootstrap.bundle.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="scoreboard_html\lib\bootstrap\dist\js\bootstrap.bundle.js.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="scoreboard_html\lib\bootstrap\dist\js\bootstrap.bundle.min.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="scoreboard_html\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="scoreboard_html\lib\bootstrap\dist\js\bootstrap.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="scoreboard_html\lib\bootstrap\dist\js\bootstrap.js.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="scoreboard_html\lib\bootstrap\dist\js\bootstrap.min.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="scoreboard_html\lib\bootstrap\dist\js\bootstrap.min.js.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="scoreboard_html\lib\bootstrap\LICENSE">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="scoreboard_html\lib\jquery\dist\jquery.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="scoreboard_html\lib\jquery\dist\jquery.min.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="scoreboard_html\lib\jquery\dist\jquery.min.map">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="scoreboard_html\lib\jquery\LICENSE.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="scoreboard_html\svg.html">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR" Version="1.1.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.8">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
+    <PackageReference Include="System.IO.Ports" Version="5.0.0" />
+    <PackageReference Include="System.Reactive" Version="4.3.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Forms\MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="icon.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Update="LICENSE">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Update="README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Update="TestData - Copy\meet.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData - Copy\totalBlank.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\meet.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="TestData\totalBlank.bin">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="3dtest\" />
+  </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>
+
+
+
+</Project>

@@ -1,0 +1,259 @@
+﻿@using OpenSwimScoreboard.Parameters
+<script>
+    var numLanes = @(DisplaySettings.NumLanes);
+    var scoreboardNames = null;
+    fetch("/ScoreboardFiles/session.json")
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+            scoreboardNames = data;
+        });
+</script>
+<div class="positioner">
+    <div class="background float-right" style="width:40%">
+        <div class="container">
+            <div class="row header-row">
+                <div class="col-12">
+                    Event <span class="event"></span>&emsp;Heat <span class="heat"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 text-right clock" style="font-size: 2em;">
+                    
+                </div>
+            </div>
+            <div class="row header-row">
+                <div class="col-12 eventName">
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="background">
+        <div class="container">
+            <div class="row header-row">
+                <div class="col-1 text-center">
+                    Place
+                </div>
+                <div class="col-1 text-center">
+                    Lane
+                </div>
+                <div class="col-5">
+                    Name
+                </div>
+                <div class="col-2">
+                    Team
+                </div>
+                <div class="col-3">
+                    Time
+                </div>
+             </div>
+            <div class="row" id="lane1">
+                <div class="col-1">
+                    <span class="place text-center"></span>
+                </div>
+                <div class="col-1">
+                    <span class="laneNum text-center"></span>
+                </div>
+                <div class="col-5">
+                    <span class="name"></span>
+                </div>
+                <div class="col-2">
+                    <span class="team"></span>
+                </div>
+                <div class="col-3">
+                    <span class="time"></span>
+                </div>
+             </div>
+            <div class="row" id="lane2">
+                <div class="col-1">
+                    <span class="place text-center"></span>
+                </div>
+                <div class="col-1">
+                    <span class="laneNum text-center"></span>
+                </div>
+                <div class="col-5">
+                    <span class="name"></span>
+                </div>
+                <div class="col-2">
+                    <span class="team"></span>
+                </div>
+                <div class="col-3">
+                    <span class="time"></span>
+                </div>
+             </div>
+            <div class="row" id="lane3">
+                <div class="col-1">
+                    <span class="place text-center"></span>
+                </div>
+                <div class="col-1">
+                    <span class="laneNum text-center"></span>
+                </div>
+                <div class="col-5">
+                    <span class="name"></span>
+                </div>
+                <div class="col-2">
+                    <span class="team"></span>
+                </div>
+                <div class="col-3">
+                    <span class="time"></span>
+                </div>
+             </div>
+            <div class="row" id="lane4">
+                <div class="col-1">
+                    <span class="place text-center"></span>
+                </div>
+                <div class="col-1">
+                    <span class="laneNum text-center"></span>
+                </div>
+                <div class="col-5">
+                    <span class="name"></span>
+                </div>
+                <div class="col-2">
+                    <span class="team"></span>
+                </div>
+                <div class="col-3">
+                    <span class="time"></span>
+                </div>
+             </div>
+            <div class="row" id="lane5">
+                <div class="col-1">
+                    <span class="place text-center"></span>
+                </div>
+                <div class="col-1">
+                    <span class="laneNum text-center"></span>
+                </div>
+                <div class="col-5">
+                    <span class="name"></span>
+                </div>
+                <div class="col-2">
+                    <span class="team"></span>
+                </div>
+                <div class="col-3">
+                    <span class="time"></span>
+                </div>
+             </div>
+            <div class="row" id="lane6">
+                <div class="col-1">
+                    <span class="place text-center"></span>
+                </div>
+                <div class="col-1">
+                    <span class="laneNum text-center"></span>
+                </div>
+                <div class="col-5">
+                    <span class="name"></span>
+                </div>
+                <div class="col-2">
+                    <span class="team"></span>
+                </div>
+                <div class="col-3">
+                    <span class="time"></span>
+                </div>
+             </div>
+            <div class="row" id="lane7">
+                <div class="col-1">
+                    <span class="place text-center"></span>
+                </div>
+                <div class="col-1">
+                    <span class="laneNum text-center"></span>
+                </div>
+                <div class="col-5">
+                    <span class="name"></span>
+                </div>
+                <div class="col-2">
+                    <span class="team"></span>
+                </div>
+                <div class="col-3">
+                    <span class="time"></span>
+                </div>
+             </div>
+            <div class="row" id="lane8">
+                <div class="col-1">
+                    <span class="place text-center"></span>
+                </div>
+                <div class="col-1">
+                    <span class="laneNum text-center"></span>
+                </div>
+                <div class="col-5">
+                    <span class="name"></span>
+                </div>
+                <div class="col-2">
+                    <span class="team"></span>
+                </div>
+                <div class="col-3">
+                    <span class="time"></span>
+                </div>
+             </div>
+            <div class="row" id="lane9">
+                <div class="col-1">
+                    <span class="place text-center"></span>
+                </div>
+                <div class="col-1">
+                    <span class="laneNum text-center"></span>
+                </div>
+                <div class="col-5">
+                    <span class="name"></span>
+                </div>
+                <div class="col-2">
+                    <span class="team"></span>
+                </div>
+                <div class="col-2">
+                    <span class="time"></span>
+                </div>
+            </div>
+            <div class="row" id="lane10">
+                <div class="col-1">
+                    <span class="place text-center"></span>
+                </div>
+                <div class="col-1">
+                    <span class="laneNum text-center"></span>
+                </div>
+                <div class="col-5">
+                    <span class="name"></span>
+                </div>
+                <div class="col-2">
+                    <span class="team"></span>
+                </div>
+                <div class="col-3">
+                    <span class="time"></span>
+                </div>
+            </div>
+@*            <div class="row" id="lane11">
+                <div class="col-1">
+                    <span class="place text-center"></span>
+                </div>
+                <div class="col-1">
+                    <span class="laneNum text-center"></span>
+                </div>
+                <div class="col-5">
+                    <span class="name"></span>
+                </div>
+                <div class="col-2">
+                    <span class="team"></span>
+                </div>
+                <div class="col-2">
+                    <span class="time"></span>
+                </div>
+            </div>
+            <div class="row" id="lane12">
+                <div class="col-1">
+                    <span class="place text-center"></span>
+                </div>
+                <div class="col-1">
+                    <span class="laneNum text-center"></span>
+                </div>
+                <div class="col-5">
+                    <span class="name"></span>
+                </div>
+                <div class="col-2">
+                    <span class="team"></span>
+                </div>
+                <div class="col-3">
+                    <span class="time"></span>
+                </div>
+            </div>
+*@        </div>
+    </div>
+</div>

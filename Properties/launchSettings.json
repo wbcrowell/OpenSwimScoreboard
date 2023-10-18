@@ -1,0 +1,23 @@
+{
+  "profiles": {
+    "OpenSwimScoreboard": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "launchUrl": "file:///C:/Users/Brad's%20PC/source/repos/OpenSwimScoreboard/scoreboard_html/html.html?6",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "http://localhost:5000"
+    },
+    "WSL": {
+      "commandName": "WSL2",
+      "launchBrowser": true,
+      "launchUrl": "file:///C:/Users/Brad's PC/source/repos/OpenSwimScoreboard/scoreboard_html/html.html?6",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ASPNETCORE_URLS": "http://localhost:5000"
+      },
+      "distributionName": ""
+    }
+  }
+}
