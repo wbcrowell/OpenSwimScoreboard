@@ -7,23 +7,42 @@ namespace OpenSwimScoreboard.Parameters
 {
     public static class Preferences
     {
+        public enum DataModeType
+        {
+            Serial,
+            Parallel,
+        }
+
         public static Form MainInterfaceForm { get; set; }
 
         public static bool UseOfflineDataOnly { get; set; } = false;
+        public static DataModeType DataMode { get; set; }
         public static int NumLanes { get; set; } = 6;
         public static string CurrentEvent { get; set; }
         public static string CurrentHeat { get; set; }
         public static string ErrorMessages { get; set; }
 
-        public static string SerialPort
+        public static string InputSerialPort
         {
             get
             {
-                return GetSetting("SerialPort");
+                return GetSetting("InputSerialPort");
             }
             set
             { 
-                SetSetting("SerialPort", value);
+                SetSetting("InputSerialPort", value);
+            }
+        }
+
+        public static string OutputSerialPort
+        {
+            get
+            {
+                return GetSetting("OutputSerialPort");
+            }
+            set
+            { 
+                SetSetting("OutputSerialPort", value);
             }
         }
 

@@ -14,13 +14,15 @@ namespace OpenSwimScoreboard.DataReaders
     /// </summary>
     public class System6ScoreDataReader : IScoreDataReader
     {
+        private const Parity DEFUALT_PARITY = Parity.Even;
         private const int DEFAULT_BAUD_RATE = 9600;
         private string _portName;
         private int _baudRate;
         private SerialPort _serialPort;
+        private SerialPort _serialOutputPort;
         private ScoreboardRegister _scoreboardRegister;
         private long _totalBytesRead = 0;
-        private FileStream _writeFileStream= null;
+        private FileStream _writeFileStream = null;
         private DateTime _startWriteTime;
 
         public string FileName { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
@@ -38,8 +40,6 @@ namespace OpenSwimScoreboard.DataReaders
             Preferences.ErrorMessages += $"Starting System6 Reader. ";
             IsRunning = true; //Assumes data reader will be started ASAP; avoids attemts to create the reader after stop. Set to false if constructor fails to create connection.
 
-            var parity = Parity.Even;
-
             if (portDefinition != null)
             {
                 SerialPortName = portDefinition.PortName;
@@ -47,7 +47,7 @@ namespace OpenSwimScoreboard.DataReaders
             }
             else
             {
-                SerialPortName = Preferences.SerialPort;
+                SerialPortName = Preferences.InputSerialPort;
                 BaudRate = Preferences.BaudRate ?? DEFAULT_BAUD_RATE;
             }
             Preferences.ErrorMessages += $"Serial port set: {SerialPortName} @ {BaudRate} baud.";
@@ -98,7 +98,7 @@ namespace OpenSwimScoreboard.DataReaders
                 _serialPort = new SerialPort
                 {
                     BaudRate = BaudRate ?? DEFAULT_BAUD_RATE,
-                    Parity = parity,
+                    Parity = DEFUALT_PARITY,
                     PortName = SerialPortName,
                 };
                 _serialPort.DataReceived += new SerialDataReceivedEventHandler(SerialDataReceived);
@@ -174,22 +174,93 @@ namespace OpenSwimScoreboard.DataReaders
             {
                 _serialPort.Close();
             }
+            if (_serialOutputPort != null && _serialOutputPort.IsOpen)
+            {
+                _serialOutputPort.Close();
+            }
         }
 
         private void SerialDataReceived(object sender, SerialDataReceivedEventArgs e)
         {
-            if (!_serialPort.IsOpen) return;
+            if (!_serialPort.IsOpen)
+            {
+                if (Preferences.MainInterfaceForm != null)
+                {
+                    ((MainForm)Preferences.MainInterfaceForm).ScoreDataProgress.Report($"Input port is closed. Please disconnect, confirm port name and baud rate, and re-connect.");
+                }
+                return;
+            }
+
+            if(!string.IsNullOrWhiteSpace(Preferences.OutputSerialPort) && Preferences.OutputSerialPort != _serialOutputPort?.PortName)
+            {
+                if (_serialOutputPort != null)
+                {
+                    _serialOutputPort.Close();
+                    _serialOutputPort.Dispose();
+                }
+                _serialOutputPort = new SerialPort
+                {
+                    BaudRate = _serialPort.BaudRate,
+                    Parity = _serialPort.Parity,
+                    PortName = Preferences.OutputSerialPort,
+                };
+
+                try
+                {
+                    _serialOutputPort.Open();
+                }
+                catch (Exception ex)
+                {
+                    if (Preferences.MainInterfaceForm != null)
+                    {
+                        ((MainForm)Preferences.MainInterfaceForm).ScoreDataProgress.Report($"Unable to connect with output port. Please correct configuration or switch to parallel mode.");
+                    }
+                }
+            }
+            else if(string.IsNullOrWhiteSpace(Preferences.OutputSerialPort))
+            {
+                _serialOutputPort.Close();
+                _serialOutputPort.Dispose();
+                _serialOutputPort = null;
+            }
 
             int bytes = _serialPort.BytesToRead;
             byte[] buffer = new byte[bytes];
             _serialPort.Read(buffer, 0, bytes);
 
-            _scoreboardRegister.ProcessBytes(buffer);
+            if (Preferences.DataMode == Preferences.DataModeType.Serial)
+            {
+                if (_serialOutputPort != null && _serialOutputPort.IsOpen)
+                {
+                    try
+                    {
+                        _serialOutputPort.Write(buffer, 0, bytes);
+                    }
+                    catch (Exception ex)
+                    {
+                        if (Preferences.MainInterfaceForm != null)
+                        {
+                            ((MainForm)Preferences.MainInterfaceForm).ScoreDataProgress.Report($"Output port error. Please correct configuration or switch to parallel mode.");
+                        }
+                    }
+                    _scoreboardRegister.ProcessBytes(buffer);
+                }
+                else
+                {
+                    if (Preferences.MainInterfaceForm != null)
+                    {
+                        ((MainForm)Preferences.MainInterfaceForm).ScoreDataProgress.Report($"Output port error. Please correct configuration or switch to parallel mode.");
+                    }
+                }
+            }
+            else
+            {
+                _scoreboardRegister.ProcessBytes(buffer);
+            }
 
             _totalBytesRead += bytes;
             if (Preferences.MainInterfaceForm != null)
             {
-
                 ((MainForm)Preferences.MainInterfaceForm).ScoreDataProgress.Report($"Connected via {_serialPort.PortName} at {_serialPort.BaudRate} baud. {_totalBytesRead} bytes read.");
             }
 
@@ -224,6 +295,11 @@ namespace OpenSwimScoreboard.DataReaders
                 _serialPort.DataReceived -= new SerialDataReceivedEventHandler(SerialDataReceived);
                 _serialPort.Dispose();
                 _serialPort = null;
+            }
+            if(_serialOutputPort != null)
+            {
+                _serialOutputPort.Dispose();
+                _serialOutputPort = null;
             }
         }
     }

@@ -74,10 +74,11 @@ namespace OpenSwimScoreboard.Forms
             testFileCheckBox.Text = $"Write test file ({Math.Round(Constants.MAX_WRITE_MILLISECONDS / 60000)} min.)";
 
             portNameComboBox.Items.AddRange(SerialPorts.AvailablePorts);
+            outputPortNameComboBox.Items.AddRange(SerialPorts.AvailablePorts);
             baudRateComboBox.Items.AddRange(SerialPorts.AvailableBaudRates);
 
-            readerComboBox.Items.AddRange(TypeUtilities.GetImplementationsOfInterface<IScoreDataReader>().Select(t => t.Name).ToArray());
-            readerComboBox.Text = nameof(System6ScoreDataReader);
+            //readerComboBox.Items.AddRange(TypeUtilities.GetImplementationsOfInterface<IScoreDataReader>().Select(t => t.Name).ToArray());
+            //readerComboBox.Text = nameof(System6ScoreDataReader);
 
             if (portNameComboBox.Items.Count < 1)
             {
@@ -85,9 +86,13 @@ namespace OpenSwimScoreboard.Forms
             }
             else
             {
-                if (!string.IsNullOrEmpty(Preferences.SerialPort) && portNameComboBox.Items.Contains(Preferences.SerialPort))
+                if (!string.IsNullOrEmpty(Preferences.InputSerialPort) && portNameComboBox.Items.Contains(Preferences.InputSerialPort))
                 {
-                    portNameComboBox.Text = Preferences.SerialPort;
+                    portNameComboBox.Text = Preferences.InputSerialPort;
+                }
+                if (!string.IsNullOrEmpty(Preferences.OutputSerialPort) && portNameComboBox.Items.Contains(Preferences.OutputSerialPort))
+                {
+                    outputPortNameComboBox.Text = Preferences.OutputSerialPort;
                 }
                 var baudRateString = Preferences.BaudRate.HasValue ? Preferences.BaudRate.ToString() : "";
                 if (baudRateComboBox.Items.Contains(baudRateString))
@@ -97,6 +102,7 @@ namespace OpenSwimScoreboard.Forms
                 //Wire up event manually; dropdown must be populated first or warning is displayed.
                 portNameComboBox.SelectedIndexChanged += new System.EventHandler(this.portNameComboBox_SelectedIndexChanged);
                 baudRateComboBox.SelectedIndexChanged += new System.EventHandler(this.baudRateComboBox_SelectedIndexChanged);
+                outputPortNameComboBox.SelectedIndexChanged += new EventHandler(this.outputPortNameComboBox_SelectedIndexChanged);
             }
 
             refreshStartList();
@@ -173,12 +179,6 @@ namespace OpenSwimScoreboard.Forms
             }
         }
 
-        //Closes the page, which ends the score data reading service and exits the program.
-        private void doneButton_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         //Returns a link that opens the html scoreboard. This is a link to a redirect to the page actually displaying the scoreboard (which has a query string).
         //Because the file:// spec does not include query strings, this vital part of the link is truncated when WinForms sends it to the default browser.
         private string WebRedirectUrl()
@@ -207,7 +207,34 @@ namespace OpenSwimScoreboard.Forms
             {
                 MessageBox.Show("Could not update serial port info. Please check to make sure port name and baud rate are not blank.");
             }
+            //else if(outputPortNameComboBox.Text == portNameComboBox.Text)
+            //{
+            //    outputPortNameComboBox.SelectedIndex = -1;
+            //    if(tabControlMode.SelectedTab.Name == "tabPageModeSerial")
+            //    {
+            //        MessageBox.Show("Please select an output port that is not the same as the input port.");
+            //    }
+            //    updateOutputPorts();
+            //}
         }
+
+        //private void updateOutputPorts()
+        //{
+        //    var outputPortRange = SerialPorts.AvailablePorts;
+        //    if(!string.IsNullOrWhiteSpace(portNameComboBox.Text))
+        //    {
+        //        outputPortRange = outputPortRange.Where(o => o != portNameComboBox.Text).ToArray();
+        //    }
+        //    outputPortNameComboBox.Items.Clear();
+        //    if (outputPortRange.Any())
+        //    {
+        //        outputPortNameComboBox.Items.AddRange(outputPortRange);
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("You do not have enough serial (COM) ports to support scoreboard data input and output. Please add another serial port to your system.");
+        //    }
+        //}
 
         //Sets port name.
         private void baudRateComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -228,7 +255,7 @@ namespace OpenSwimScoreboard.Forms
                 portNameComboBox.Enabled = true;
                 baudRateComboBox.Enabled = true;
                 testFileCheckBox.Enabled = true;
-                readerComboBox.Enabled = true;
+                //readerComboBox.Enabled = true;
                 serialPortButton.Text = "Connect";
             }
             //Connect...
@@ -238,7 +265,7 @@ namespace OpenSwimScoreboard.Forms
                 portNameComboBox.Enabled = false;
                 baudRateComboBox.Enabled = false;
                 testFileCheckBox.Enabled = false;
-                readerComboBox.Enabled = false;
+                //readerComboBox.Enabled = false;
                 serialPortButton.Text = "Disconnect";
             }
         }
@@ -360,9 +387,10 @@ namespace OpenSwimScoreboard.Forms
                 textBoxHeat.Text = "";
 
                 Preferences.UseOfflineDataOnly = false;
-                checkBoxUseOfflineDataOnly.Checked = false;
-                labelEvent.Enabled = false;
-                labelHeat.Enabled = false;
+                if (tabControlMode.SelectedTab.Name == "tabPageModeOffline")
+                {
+                    MessageBox.Show("Cannot display offline data. No .scb files have been saved. Please click the CHOOSE button at the top of the window, and locate these files.");
+                }
 
                 return false;
             }
@@ -387,6 +415,60 @@ namespace OpenSwimScoreboard.Forms
         private void buttonShowStatusMsgs_Click(object sender, EventArgs e)
         {
             MessageBox.Show(Preferences.ErrorMessages);
+        }
+
+        private void tabControlMode_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (((TabControl)sender).SelectedTab.Name)
+            {
+                case "tabPageModeSerial":
+                    Preferences.UseOfflineDataOnly = false;
+                    Preferences.DataMode = Preferences.DataModeType.Serial;
+
+                    if (outputPortNameComboBox.SelectedIndex == -1)
+                    {
+                        MessageBox.Show("No output port selected. Choose an output serial (COM) port to send data to the scoreboard.");
+                    }
+                    break;
+                case "tabPageModeParallel":
+                    Preferences.UseOfflineDataOnly = false;
+                    Preferences.DataMode = Preferences.DataModeType.Parallel;
+                    break;
+                case "tabPageModeOffline":
+                    if (_events == null || !_events.Any() || _eventNumbers == null || !_eventNumbers.Any())
+                    {
+                        ((CheckBox)sender).Checked = false;
+                        MessageBox.Show("Cannot display offline data. No .scb files have been saved. Please click the CHOOSE button at the top of the window, and locate these files.");
+                    }
+                    else
+                    {
+                        if (string.IsNullOrWhiteSpace(textBoxEvent.Text))
+                        {
+                            buttonPlusEventHeat_Click(null, null);
+                        }
+                        else
+                        {
+                            Preferences.CurrentEvent = textBoxEvent.Text;
+                            Preferences.CurrentHeat = textBoxHeat.Text;
+                        }
+
+                        Preferences.UseOfflineDataOnly = true;
+                    }
+
+                    break;
+            }
+        }
+
+        private void outputPortNameComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(outputPortNameComboBox.Text))
+            {
+                Preferences.OutputSerialPort = outputPortNameComboBox.Text;
+            }
+            else
+            {
+                MessageBox.Show("Please select a valid port name for output.");
+            }
         }
     }
 }

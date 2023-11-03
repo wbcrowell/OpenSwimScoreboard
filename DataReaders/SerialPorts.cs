@@ -50,7 +50,7 @@ namespace OpenSwimScoreboard.DataReaders
                 if (int.TryParse(baudRate, out baudRateInt))
                 {
                     Preferences.BaudRate = baudRateInt;
-                    Preferences.SerialPort = portName;
+                    Preferences.InputSerialPort = portName;
                     return true;
                 }
             }

@@ -33,7 +33,6 @@
             namesDataText = new System.Windows.Forms.TextBox();
             namesDataCancelButton = new System.Windows.Forms.Button();
             titleLabel = new System.Windows.Forms.Label();
-            doneButton = new System.Windows.Forms.Button();
             namesDataFolderBrowser = new System.Windows.Forms.FolderBrowserDialog();
             panel1 = new System.Windows.Forms.Panel();
             namesDataResultLabel = new System.Windows.Forms.Label();
@@ -45,16 +44,15 @@
             copyLinkButton = new System.Windows.Forms.Button();
             label2 = new System.Windows.Forms.Label();
             linkLabel = new System.Windows.Forms.LinkLabel();
-            scoreboardActiveLabel = new System.Windows.Forms.Label();
             panel3 = new System.Windows.Forms.Panel();
             numLanesText = new System.Windows.Forms.TextBox();
             lanesLabel = new System.Windows.Forms.Label();
             lanesTrackBar = new System.Windows.Forms.TrackBar();
             panel4 = new System.Windows.Forms.Panel();
+            buttonShowStatusMsgs = new System.Windows.Forms.Button();
             label1 = new System.Windows.Forms.Label();
             serviceStatusLabel = new System.Windows.Forms.Label();
             panel5 = new System.Windows.Forms.Panel();
-            readerComboBox = new System.Windows.Forms.ComboBox();
             writeStatusProgressBar = new System.Windows.Forms.ProgressBar();
             testFileCheckBox = new System.Windows.Forms.CheckBox();
             dataConnectionLabel = new System.Windows.Forms.Label();
@@ -63,16 +61,24 @@
             baudRateLabel = new System.Windows.Forms.Label();
             portNameLabel = new System.Windows.Forms.Label();
             baudRateComboBox = new System.Windows.Forms.ComboBox();
-            panel6 = new System.Windows.Forms.Panel();
-            label3 = new System.Windows.Forms.Label();
+            labelTabModeOfflineExplain = new System.Windows.Forms.Label();
             buttonMinusEventHeat = new System.Windows.Forms.Button();
             buttonPlusEventHeat = new System.Windows.Forms.Button();
             labelHeat = new System.Windows.Forms.Label();
             labelEvent = new System.Windows.Forms.Label();
             textBoxHeat = new System.Windows.Forms.TextBox();
             textBoxEvent = new System.Windows.Forms.TextBox();
-            checkBoxUseOfflineDataOnly = new System.Windows.Forms.CheckBox();
-            buttonShowStatusMsgs = new System.Windows.Forms.Button();
+            tabControlMode = new System.Windows.Forms.TabControl();
+            tabPageModeSerial = new System.Windows.Forms.TabPage();
+            outputPortNameComboBox = new System.Windows.Forms.ComboBox();
+            outputPortNameLabel = new System.Windows.Forms.Label();
+            labelTabModeSerial = new System.Windows.Forms.Label();
+            label6 = new System.Windows.Forms.Label();
+            tabPageModeParallel = new System.Windows.Forms.TabPage();
+            labelTabModeParallel = new System.Windows.Forms.Label();
+            label4 = new System.Windows.Forms.Label();
+            tabPageModeOffline = new System.Windows.Forms.TabPage();
+            labelTabModeOffline = new System.Windows.Forms.Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
@@ -80,7 +86,10 @@
             ((System.ComponentModel.ISupportInitialize)lanesTrackBar).BeginInit();
             panel4.SuspendLayout();
             panel5.SuspendLayout();
-            panel6.SuspendLayout();
+            tabControlMode.SuspendLayout();
+            tabPageModeSerial.SuspendLayout();
+            tabPageModeParallel.SuspendLayout();
+            tabPageModeOffline.SuspendLayout();
             SuspendLayout();
             // 
             // namesDataLabel
@@ -123,17 +132,6 @@
             titleLabel.Size = new System.Drawing.Size(320, 39);
             titleLabel.TabIndex = 0;
             titleLabel.Text = "Open Swim Scoreboard";
-            // 
-            // doneButton
-            // 
-            doneButton.ForeColor = System.Drawing.SystemColors.HotTrack;
-            doneButton.Location = new System.Drawing.Point(515, 969);
-            doneButton.Name = "doneButton";
-            doneButton.Size = new System.Drawing.Size(75, 26);
-            doneButton.TabIndex = 10;
-            doneButton.Text = "Stop";
-            doneButton.UseVisualStyleBackColor = true;
-            doneButton.Click += doneButton_Click;
             // 
             // namesDataFolderBrowser
             // 
@@ -212,18 +210,17 @@
             panel2.Controls.Add(copyLinkButton);
             panel2.Controls.Add(label2);
             panel2.Controls.Add(linkLabel);
-            panel2.Controls.Add(scoreboardActiveLabel);
-            panel2.Location = new System.Drawing.Point(26, 428);
+            panel2.Location = new System.Drawing.Point(26, 413);
             panel2.Margin = new System.Windows.Forms.Padding(0, 0, 0, 10);
             panel2.Name = "panel2";
             panel2.Padding = new System.Windows.Forms.Padding(13);
-            panel2.Size = new System.Drawing.Size(564, 136);
+            panel2.Size = new System.Drawing.Size(564, 86);
             panel2.TabIndex = 6;
             // 
             // copyLinkButton
             // 
             copyLinkButton.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            copyLinkButton.Location = new System.Drawing.Point(471, 101);
+            copyLinkButton.Location = new System.Drawing.Point(471, 11);
             copyLinkButton.Name = "copyLinkButton";
             copyLinkButton.Size = new System.Drawing.Size(75, 23);
             copyLinkButton.TabIndex = 6;
@@ -235,7 +232,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            label2.Location = new System.Drawing.Point(16, 106);
+            label2.Location = new System.Drawing.Point(19, 55);
             label2.Name = "label2";
             label2.Size = new System.Drawing.Size(301, 15);
             label2.TabIndex = 0;
@@ -244,24 +241,15 @@
             // linkLabel
             // 
             linkLabel.AutoSize = true;
-            linkLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            linkLabel.Location = new System.Drawing.Point(17, 45);
+            linkLabel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            linkLabel.Location = new System.Drawing.Point(20, 13);
             linkLabel.MaximumSize = new System.Drawing.Size(538, 50);
             linkLabel.Name = "linkLabel";
-            linkLabel.Size = new System.Drawing.Size(54, 15);
+            linkLabel.Size = new System.Drawing.Size(300, 17);
             linkLabel.TabIndex = 5;
             linkLabel.TabStop = true;
-            linkLabel.Text = "linkLabel";
+            linkLabel.Text = "Click this Link to show scoreboard in web browser";
             linkLabel.LinkClicked += linkLabel_LinkClicked;
-            // 
-            // scoreboardActiveLabel
-            // 
-            scoreboardActiveLabel.AutoSize = true;
-            scoreboardActiveLabel.Location = new System.Drawing.Point(17, 13);
-            scoreboardActiveLabel.Name = "scoreboardActiveLabel";
-            scoreboardActiveLabel.Size = new System.Drawing.Size(322, 17);
-            scoreboardActiveLabel.TabIndex = 0;
-            scoreboardActiveLabel.Text = "Scoreboard server is running. Click this link to display:";
             // 
             // panel3
             // 
@@ -273,7 +261,7 @@
             panel3.Margin = new System.Windows.Forms.Padding(0, 0, 0, 10);
             panel3.Name = "panel3";
             panel3.Padding = new System.Windows.Forms.Padding(13);
-            panel3.Size = new System.Drawing.Size(564, 121);
+            panel3.Size = new System.Drawing.Size(564, 106);
             panel3.TabIndex = 7;
             // 
             // numLanesText
@@ -311,11 +299,21 @@
             panel4.Controls.Add(buttonShowStatusMsgs);
             panel4.Controls.Add(label1);
             panel4.Controls.Add(serviceStatusLabel);
-            panel4.Location = new System.Drawing.Point(26, 729);
+            panel4.Location = new System.Drawing.Point(25, 850);
             panel4.Name = "panel4";
             panel4.Padding = new System.Windows.Forms.Padding(13);
             panel4.Size = new System.Drawing.Size(564, 119);
             panel4.TabIndex = 8;
+            // 
+            // buttonShowStatusMsgs
+            // 
+            buttonShowStatusMsgs.Location = new System.Drawing.Point(390, 16);
+            buttonShowStatusMsgs.Name = "buttonShowStatusMsgs";
+            buttonShowStatusMsgs.Size = new System.Drawing.Size(156, 25);
+            buttonShowStatusMsgs.TabIndex = 1;
+            buttonShowStatusMsgs.Text = "Show Debug Msgs";
+            buttonShowStatusMsgs.UseVisualStyleBackColor = true;
+            buttonShowStatusMsgs.Click += buttonShowStatusMsgs_Click;
             // 
             // label1
             // 
@@ -339,8 +337,9 @@
             // 
             // panel5
             // 
+            panel5.AutoSize = true;
+            panel5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            panel5.Controls.Add(readerComboBox);
             panel5.Controls.Add(writeStatusProgressBar);
             panel5.Controls.Add(testFileCheckBox);
             panel5.Controls.Add(dataConnectionLabel);
@@ -350,22 +349,11 @@
             panel5.Controls.Add(portNameLabel);
             panel5.Controls.Add(baudRateComboBox);
             panel5.ForeColor = System.Drawing.SystemColors.ControlText;
-            panel5.Location = new System.Drawing.Point(26, 575);
+            panel5.Location = new System.Drawing.Point(25, 509);
             panel5.Name = "panel5";
             panel5.Padding = new System.Windows.Forms.Padding(13);
             panel5.Size = new System.Drawing.Size(564, 144);
             panel5.TabIndex = 9;
-            // 
-            // readerComboBox
-            // 
-            readerComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            readerComboBox.Enabled = false;
-            readerComboBox.FormattingEnabled = true;
-            readerComboBox.Location = new System.Drawing.Point(390, 10);
-            readerComboBox.Name = "readerComboBox";
-            readerComboBox.Size = new System.Drawing.Size(156, 25);
-            readerComboBox.TabIndex = 14;
-            readerComboBox.Visible = false;
             // 
             // writeStatusProgressBar
             // 
@@ -430,9 +418,9 @@
             portNameLabel.AutoSize = true;
             portNameLabel.Location = new System.Drawing.Point(16, 62);
             portNameLabel.Name = "portNameLabel";
-            portNameLabel.Size = new System.Drawing.Size(71, 17);
+            portNameLabel.Size = new System.Drawing.Size(150, 17);
             portNameLabel.TabIndex = 2;
-            portNameLabel.Text = "Port name:";
+            portNameLabel.Text = "Input port from console:";
             // 
             // baudRateComboBox
             // 
@@ -444,36 +432,20 @@
             baudRateComboBox.Size = new System.Drawing.Size(207, 25);
             baudRateComboBox.TabIndex = 7;
             // 
-            // panel6
+            // labelTabModeOfflineExplain
             // 
-            panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            panel6.Controls.Add(label3);
-            panel6.Controls.Add(buttonMinusEventHeat);
-            panel6.Controls.Add(buttonPlusEventHeat);
-            panel6.Controls.Add(labelHeat);
-            panel6.Controls.Add(labelEvent);
-            panel6.Controls.Add(textBoxHeat);
-            panel6.Controls.Add(textBoxEvent);
-            panel6.Controls.Add(checkBoxUseOfflineDataOnly);
-            panel6.Location = new System.Drawing.Point(26, 858);
-            panel6.Name = "panel6";
-            panel6.Size = new System.Drawing.Size(564, 86);
-            panel6.TabIndex = 11;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.ForeColor = System.Drawing.SystemColors.HotTrack;
-            label3.Location = new System.Drawing.Point(37, 40);
-            label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(312, 34);
-            label3.TabIndex = 4;
-            label3.Text = "Shows event number and lane seeds when live data \r\nnot available. Change manually using +/- buttons.";
+            labelTabModeOfflineExplain.AutoSize = true;
+            labelTabModeOfflineExplain.ForeColor = System.Drawing.SystemColors.HotTrack;
+            labelTabModeOfflineExplain.Location = new System.Drawing.Point(21, 59);
+            labelTabModeOfflineExplain.Name = "labelTabModeOfflineExplain";
+            labelTabModeOfflineExplain.Size = new System.Drawing.Size(312, 34);
+            labelTabModeOfflineExplain.TabIndex = 4;
+            labelTabModeOfflineExplain.Text = "Shows event number and lane seeds when live data \r\nnot available. Change manually using +/- buttons.";
             // 
             // buttonMinusEventHeat
             // 
             buttonMinusEventHeat.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            buttonMinusEventHeat.Location = new System.Drawing.Point(503, 45);
+            buttonMinusEventHeat.Location = new System.Drawing.Point(484, 55);
             buttonMinusEventHeat.Name = "buttonMinusEventHeat";
             buttonMinusEventHeat.Size = new System.Drawing.Size(43, 25);
             buttonMinusEventHeat.TabIndex = 3;
@@ -484,7 +456,7 @@
             // buttonPlusEventHeat
             // 
             buttonPlusEventHeat.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            buttonPlusEventHeat.Location = new System.Drawing.Point(503, 14);
+            buttonPlusEventHeat.Location = new System.Drawing.Point(484, 24);
             buttonPlusEventHeat.Name = "buttonPlusEventHeat";
             buttonPlusEventHeat.Size = new System.Drawing.Size(43, 25);
             buttonPlusEventHeat.TabIndex = 3;
@@ -495,8 +467,7 @@
             // labelHeat
             // 
             labelHeat.AutoSize = true;
-            labelHeat.Enabled = false;
-            labelHeat.Location = new System.Drawing.Point(358, 48);
+            labelHeat.Location = new System.Drawing.Point(339, 58);
             labelHeat.Name = "labelHeat";
             labelHeat.Size = new System.Drawing.Size(35, 17);
             labelHeat.TabIndex = 2;
@@ -505,8 +476,7 @@
             // labelEvent
             // 
             labelEvent.AutoSize = true;
-            labelEvent.Enabled = false;
-            labelEvent.Location = new System.Drawing.Point(358, 17);
+            labelEvent.Location = new System.Drawing.Point(339, 27);
             labelEvent.Name = "labelEvent";
             labelEvent.Size = new System.Drawing.Size(39, 17);
             labelEvent.TabIndex = 2;
@@ -514,7 +484,7 @@
             // 
             // textBoxHeat
             // 
-            textBoxHeat.Location = new System.Drawing.Point(412, 45);
+            textBoxHeat.Location = new System.Drawing.Point(393, 55);
             textBoxHeat.Name = "textBoxHeat";
             textBoxHeat.ReadOnly = true;
             textBoxHeat.Size = new System.Drawing.Size(74, 25);
@@ -522,46 +492,152 @@
             // 
             // textBoxEvent
             // 
-            textBoxEvent.Location = new System.Drawing.Point(412, 14);
+            textBoxEvent.Location = new System.Drawing.Point(393, 24);
             textBoxEvent.Name = "textBoxEvent";
             textBoxEvent.ReadOnly = true;
             textBoxEvent.Size = new System.Drawing.Size(74, 25);
             textBoxEvent.TabIndex = 1;
             // 
-            // checkBoxUseOfflineDataOnly
+            // tabControlMode
             // 
-            checkBoxUseOfflineDataOnly.AutoSize = true;
-            checkBoxUseOfflineDataOnly.Location = new System.Drawing.Point(20, 16);
-            checkBoxUseOfflineDataOnly.Name = "checkBoxUseOfflineDataOnly";
-            checkBoxUseOfflineDataOnly.Size = new System.Drawing.Size(156, 21);
-            checkBoxUseOfflineDataOnly.TabIndex = 0;
-            checkBoxUseOfflineDataOnly.Text = "Show offline data only";
-            checkBoxUseOfflineDataOnly.UseVisualStyleBackColor = true;
-            checkBoxUseOfflineDataOnly.CheckedChanged += checkBoxUseOfflineDataOnly_CheckedChanged;
+            tabControlMode.Controls.Add(tabPageModeSerial);
+            tabControlMode.Controls.Add(tabPageModeParallel);
+            tabControlMode.Controls.Add(tabPageModeOffline);
+            tabControlMode.Location = new System.Drawing.Point(26, 663);
+            tabControlMode.Name = "tabControlMode";
+            tabControlMode.SelectedIndex = 0;
+            tabControlMode.Size = new System.Drawing.Size(564, 177);
+            tabControlMode.TabIndex = 12;
+            tabControlMode.SelectedIndexChanged += tabControlMode_SelectedIndexChanged;
             // 
-            // buttonShowStatusMsgs
+            // tabPageModeSerial
             // 
-            buttonShowStatusMsgs.Location = new System.Drawing.Point(390, 16);
-            buttonShowStatusMsgs.Name = "buttonShowStatusMsgs";
-            buttonShowStatusMsgs.Size = new System.Drawing.Size(156, 25);
-            buttonShowStatusMsgs.TabIndex = 1;
-            buttonShowStatusMsgs.Text = "Show Status Msgs";
-            buttonShowStatusMsgs.UseVisualStyleBackColor = true;
-            buttonShowStatusMsgs.Click += buttonShowStatusMsgs_Click;
+            tabPageModeSerial.BackColor = System.Drawing.Color.White;
+            tabPageModeSerial.Controls.Add(outputPortNameComboBox);
+            tabPageModeSerial.Controls.Add(outputPortNameLabel);
+            tabPageModeSerial.Controls.Add(labelTabModeSerial);
+            tabPageModeSerial.Controls.Add(label6);
+            tabPageModeSerial.Location = new System.Drawing.Point(4, 26);
+            tabPageModeSerial.Name = "tabPageModeSerial";
+            tabPageModeSerial.Padding = new System.Windows.Forms.Padding(3);
+            tabPageModeSerial.Size = new System.Drawing.Size(556, 147);
+            tabPageModeSerial.TabIndex = 0;
+            tabPageModeSerial.Text = "Serial mode";
+            // 
+            // outputPortNameComboBox
+            // 
+            outputPortNameComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            outputPortNameComboBox.FormattingEnabled = true;
+            outputPortNameComboBox.Location = new System.Drawing.Point(330, 59);
+            outputPortNameComboBox.Name = "outputPortNameComboBox";
+            outputPortNameComboBox.Size = new System.Drawing.Size(207, 25);
+            outputPortNameComboBox.TabIndex = 14;
+            // 
+            // outputPortNameLabel
+            // 
+            outputPortNameLabel.AutoSize = true;
+            outputPortNameLabel.Location = new System.Drawing.Point(330, 24);
+            outputPortNameLabel.Name = "outputPortNameLabel";
+            outputPortNameLabel.Size = new System.Drawing.Size(168, 17);
+            outputPortNameLabel.TabIndex = 13;
+            outputPortNameLabel.Text = "Output port to scoreboard:";
+            // 
+            // labelTabModeSerial
+            // 
+            labelTabModeSerial.AutoSize = true;
+            labelTabModeSerial.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            labelTabModeSerial.Location = new System.Drawing.Point(21, 24);
+            labelTabModeSerial.Name = "labelTabModeSerial";
+            labelTabModeSerial.Size = new System.Drawing.Size(148, 17);
+            labelTabModeSerial.TabIndex = 7;
+            labelTabModeSerial.Text = "NOW IN SERIAL MODE";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.ForeColor = System.Drawing.SystemColors.HotTrack;
+            label6.Location = new System.Drawing.Point(21, 59);
+            label6.MaximumSize = new System.Drawing.Size(300, 0);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(294, 51);
+            label6.TabIndex = 6;
+            label6.Text = "Receives data from timing console and passes it along to scoreboard. Must select an outbound serial port to connect to scoreboard.";
+            // 
+            // tabPageModeParallel
+            // 
+            tabPageModeParallel.BackColor = System.Drawing.Color.White;
+            tabPageModeParallel.Controls.Add(labelTabModeParallel);
+            tabPageModeParallel.Controls.Add(label4);
+            tabPageModeParallel.Location = new System.Drawing.Point(4, 26);
+            tabPageModeParallel.Name = "tabPageModeParallel";
+            tabPageModeParallel.Padding = new System.Windows.Forms.Padding(3);
+            tabPageModeParallel.Size = new System.Drawing.Size(556, 147);
+            tabPageModeParallel.TabIndex = 1;
+            tabPageModeParallel.Text = "Parallel mode";
+            // 
+            // labelTabModeParallel
+            // 
+            labelTabModeParallel.AutoSize = true;
+            labelTabModeParallel.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            labelTabModeParallel.Location = new System.Drawing.Point(21, 24);
+            labelTabModeParallel.Name = "labelTabModeParallel";
+            labelTabModeParallel.Size = new System.Drawing.Size(167, 17);
+            labelTabModeParallel.TabIndex = 7;
+            labelTabModeParallel.Text = "NOW IN PARALLEL MODE";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.ForeColor = System.Drawing.SystemColors.HotTrack;
+            label4.Location = new System.Drawing.Point(21, 59);
+            label4.MaximumSize = new System.Drawing.Size(300, 0);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(233, 34);
+            label4.TabIndex = 6;
+            label4.Text = "Receives data from timing console via Y-connection.";
+            // 
+            // tabPageModeOffline
+            // 
+            tabPageModeOffline.BackColor = System.Drawing.Color.White;
+            tabPageModeOffline.Controls.Add(labelTabModeOffline);
+            tabPageModeOffline.Controls.Add(labelEvent);
+            tabPageModeOffline.Controls.Add(textBoxEvent);
+            tabPageModeOffline.Controls.Add(textBoxHeat);
+            tabPageModeOffline.Controls.Add(labelTabModeOfflineExplain);
+            tabPageModeOffline.Controls.Add(labelHeat);
+            tabPageModeOffline.Controls.Add(buttonMinusEventHeat);
+            tabPageModeOffline.Controls.Add(buttonPlusEventHeat);
+            tabPageModeOffline.Location = new System.Drawing.Point(4, 26);
+            tabPageModeOffline.Name = "tabPageModeOffline";
+            tabPageModeOffline.Size = new System.Drawing.Size(556, 147);
+            tabPageModeOffline.TabIndex = 2;
+            tabPageModeOffline.Text = "Offline data only";
+            // 
+            // labelTabModeOffline
+            // 
+            labelTabModeOffline.AutoSize = true;
+            labelTabModeOffline.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            labelTabModeOffline.Location = new System.Drawing.Point(21, 24);
+            labelTabModeOffline.Name = "labelTabModeOffline";
+            labelTabModeOffline.Size = new System.Drawing.Size(158, 17);
+            labelTabModeOffline.TabIndex = 5;
+            labelTabModeOffline.Text = "NOW IN OFFLINE MODE";
             // 
             // MainForm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            AutoScroll = true;
+            AutoSize = true;
+            AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             BackColor = System.Drawing.SystemColors.Window;
-            ClientSize = new System.Drawing.Size(616, 1025);
-            Controls.Add(panel6);
+            ClientSize = new System.Drawing.Size(618, 1048);
+            Controls.Add(tabControlMode);
             Controls.Add(panel5);
             Controls.Add(panel4);
             Controls.Add(panel3);
             Controls.Add(panel2);
             Controls.Add(panel1);
-            Controls.Add(doneButton);
             Controls.Add(pictureBox1);
             Controls.Add(titleLabel);
             Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -581,8 +657,13 @@
             panel4.PerformLayout();
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
-            panel6.ResumeLayout(false);
-            panel6.PerformLayout();
+            tabControlMode.ResumeLayout(false);
+            tabPageModeSerial.ResumeLayout(false);
+            tabPageModeSerial.PerformLayout();
+            tabPageModeParallel.ResumeLayout(false);
+            tabPageModeParallel.PerformLayout();
+            tabPageModeOffline.ResumeLayout(false);
+            tabPageModeOffline.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -593,7 +674,6 @@
         private System.Windows.Forms.TextBox namesDataText;
         private System.Windows.Forms.Button namesDataCancelButton;
         private System.Windows.Forms.Label titleLabel;
-        private System.Windows.Forms.Button doneButton;
         private System.Windows.Forms.FolderBrowserDialog namesDataFolderBrowser;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
@@ -602,7 +682,6 @@
         private System.Windows.Forms.Label namesDataWarningLabel;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.LinkLabel linkLabel;
-        private System.Windows.Forms.Label scoreboardActiveLabel;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label lanesLabel;
         private System.Windows.Forms.TrackBar lanesTrackBar;
@@ -622,16 +701,24 @@
         private System.Windows.Forms.Label dataConnectionLabel;
         private System.Windows.Forms.CheckBox testFileCheckBox;
         private System.Windows.Forms.ProgressBar writeStatusProgressBar;
-        private System.Windows.Forms.ComboBox readerComboBox;
-        private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Button buttonMinusEventHeat;
         private System.Windows.Forms.Button buttonPlusEventHeat;
         private System.Windows.Forms.Label labelHeat;
         private System.Windows.Forms.Label labelEvent;
         private System.Windows.Forms.TextBox textBoxHeat;
         private System.Windows.Forms.TextBox textBoxEvent;
-        private System.Windows.Forms.CheckBox checkBoxUseOfflineDataOnly;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label labelTabModeOfflineExplain;
         private System.Windows.Forms.Button buttonShowStatusMsgs;
+        private System.Windows.Forms.TabControl tabControlMode;
+        private System.Windows.Forms.TabPage tabPageModeSerial;
+        private System.Windows.Forms.TabPage tabPageModeParallel;
+        private System.Windows.Forms.TabPage tabPageModeOffline;
+        private System.Windows.Forms.Label labelTabModeOffline;
+        private System.Windows.Forms.Label labelTabModeSerial;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label labelTabModeParallel;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox outputPortNameComboBox;
+        private System.Windows.Forms.Label outputPortNameLabel;
     }
 }

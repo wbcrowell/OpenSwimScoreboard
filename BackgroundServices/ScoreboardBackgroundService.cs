@@ -29,7 +29,7 @@ namespace OpenSwimScoreboard.BackgroundServices
 
             //Uncomment this DataReader to connect with a System6 console
 
-                dr = new System6ScoreDataReader();
+            dr = new System6ScoreDataReader();
 
             //-----------------------------------------------------------
 
@@ -37,11 +37,11 @@ namespace OpenSwimScoreboard.BackgroundServices
             //Uncomment this DataReader to connect to the FileDataReader,
             // which is used for testing
 
-                //dr = new FileScoreDataReader
-                //{
-                //    FileName = "meet.bin" //FileName points to the file of
-                //                          // pre-recorded test stream data
-                //};
+            //dr = new FileScoreDataReader
+            //{
+            //    FileName = "meet.bin" //FileName points to the file of
+            //                          // pre-recorded test stream data
+            //};
 
             //-----------------------------------------------------------
 
@@ -92,7 +92,7 @@ namespace OpenSwimScoreboard.BackgroundServices
                         //Can only open a serial connection once, so we have to re-create.
                         dr = new System6ScoreDataReader(new PortDefinition
                         {
-                            PortName = Parameters.Preferences.SerialPort,
+                            PortName = Parameters.Preferences.InputSerialPort,
                             BaudRate = Parameters.Preferences.BaudRate,
                         });
                         Task.Run(() => dr.Start(sr)); //start reading incoming data and post to ScoreboardRegister

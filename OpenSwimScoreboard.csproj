@@ -17,6 +17,7 @@
     <Copyright>2023</Copyright>
     <Title>Open Swim Scoreboard</Title>
     <FileVersion>1.1.0-beta</FileVersion>
+    <Version>1.2.0-beta</Version>
   </PropertyGroup>
 
   <ItemGroup>
